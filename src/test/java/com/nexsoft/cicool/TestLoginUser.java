@@ -2,6 +2,7 @@ package com.nexsoft.cicool;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -23,9 +24,11 @@ protected WebDriver driver;
 	@Test
 	public void testLogin() {
 		
-		HomePage home = new HomePage(driver);
+		HomePage home = PageFactory.initElements(driver, HomePage.class);
 		SignInPage formSignIn = home.clickSignIn();
-		formSignIn.loginValidUser("dewabrata@gmail.com", "123456");
+		Dashboard dashboard =formSignIn.loginValidUser("dewabrata@gmail.com", "123456");
+		
+		dashboard.clickCrudBuilder();
 		
 	}
 

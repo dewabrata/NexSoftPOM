@@ -2,13 +2,24 @@ package com.nexsoft.cicool;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 	
 	protected WebDriver driver;
 	
-	private By signIn = By.xpath("//a[@class='page-scroll']");
-	private By languageSetting = By.xpath("//a[@class='dropdown-toggle']");
+	//private By signIn = By.xpath("//a[@class='page-scroll']");
+	//private By languageSetting = By.xpath("//a[@class='dropdown-toggle']");
+	
+	
+	@FindBy(xpath ="//a[@class='page-scroll']" )
+	private WebElement signIn;
+	
+	@FindBy()
+	private WebElement languageSetting;
+	
 	
 	
 	public HomePage(WebDriver driver) {
@@ -16,9 +27,13 @@ public class HomePage {
 	}
 	
 	public SignInPage clickSignIn() {
-		driver.findElement(signIn).click();
 		
-		return new SignInPage(driver);
+		
+		signIn.click();
+		
+		SignInPage signInPage  = PageFactory.initElements(driver, SignInPage.class);
+		
+		return signInPage;
 	}
 
 }
