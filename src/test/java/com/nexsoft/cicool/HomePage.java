@@ -21,6 +21,14 @@ public class HomePage {
 	private WebElement languageSetting;
 	
 	
+	@FindBy(xpath = "//a[normalize-space()='Logout']")
+	private WebElement btnLogout;
+	
+	
+	@FindBy(xpath = "//a[@class='page-scroll dropdown-toggle']")
+	private WebElement btnDashboardUsername;
+	
+	
 	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -34,6 +42,18 @@ public class HomePage {
 		SignInPage signInPage  = PageFactory.initElements(driver, SignInPage.class);
 		
 		return signInPage;
+	}
+	
+	
+	
+		
+	
+	
+	public void logout() {
+		
+			btnDashboardUsername.click();
+			btnLogout.click();
+		
 	}
 
 }

@@ -25,6 +25,9 @@ public class SignInPage {
 	@FindBy(xpath = "//button[@type='submit']" )
 	private WebElement btnSignIn;
 	
+	@FindBy(xpath = "//p[normalize-space()='E-mail Address and Password do not match.']" )
+	private WebElement errorPassword;
+	
 	
 	public SignInPage(WebDriver driver) {
 		
@@ -43,6 +46,10 @@ public class SignInPage {
 		
 		
 		
+	}
+	
+	public String getErrorPassword() {
+		return errorPassword.getText();
 	}
 	
 

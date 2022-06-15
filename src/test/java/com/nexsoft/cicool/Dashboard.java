@@ -11,6 +11,9 @@ protected WebDriver driver;
 	
 	@FindBy(linkText = "CRUD Builder" )
 	private WebElement btnCrudBuilder;
+	
+	@FindBy(xpath = "//span[@class='hidden-xs']" )
+	private WebElement username;
 
 	public Dashboard(WebDriver driver)  {
 		// TODO Auto-generated constructor stub
@@ -29,6 +32,12 @@ protected WebDriver driver;
 		
 		return crudBuilder;
 		
+	}
+	
+	
+	public String getUsername() {
+		
+		return username.getText();
 	}
 	
 }
